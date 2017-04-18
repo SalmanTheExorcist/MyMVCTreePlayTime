@@ -1,0 +1,69 @@
+﻿@model LevelsWithDbWebApp.Models.MyLevelsHolderMug
+@using LevelsWithDbWebApp.Models
+
+<div class="row">
+
+   
+
+    <ul class="list-unstyled">
+        @foreach (var levelMain in Model.LevelMains)
+        {
+            <li>@levelMain.Title</li>
+            if (levelMain.SubLevelOne != null)
+            {
+                <li>
+                    <ul>
+                        <li>
+                            @levelMain.SubLevelOne.Title
+                        </li>
+                        @if (levelMain.SubLevelOne.SubLevelTwo != null)
+                        {
+                            <li class="list-unstyled">
+                                <ul>
+                                    <li>@levelMain.SubLevelOne.SubLevelTwo.Title</li>
+                                    @if (levelMain.SubLevelOne.SubLevelTwo.SubLevelThree != null)
+                                    {
+                                        <li class="list-unstyled">
+                                            <ul>
+                                                <li>
+                                                    @levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.Title
+                                                </li>
+                                                @if (levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour != null)
+                                                {
+                                                    <li class="list-unstyled">
+                                                        <ul>
+                                                            <li>
+                                                                @levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.Title
+                                                            </li>
+                                                            @if (levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFive != null)
+                                                            {
+                                                                <li class="list-unstyled">
+                                                                    <ul>
+                                                                        <li>
+                                                                            @levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFive.Title
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    </li>
+                                                }
+                                            </ul>
+
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+        }
+    </ul>
+
+
+
+
+
+</div>

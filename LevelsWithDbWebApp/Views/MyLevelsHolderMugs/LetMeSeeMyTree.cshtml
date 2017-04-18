@@ -1,0 +1,102 @@
+﻿@model LevelsWithDbWebApp.Models.MyLevelsHolderMug
+@using LevelsWithDbWebApp.Models
+@{
+    ViewBag.Title = "My Tree";
+}
+
+
+<div class="row well">
+    <h2>@ViewBag.Title - @Model.MyLevelsHolderMugName</h2>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<div class="row">
+
+  
+
+    <ul class="list-unstyled">
+        @foreach (var levelMain in Model.LevelMains)
+        {
+            <li>
+        
+                <span class="glyphicon glyphicon-heart" aria-hidden="true">
+                    @levelMain.Title
+                </span>
+        
+           </li>
+            if (levelMain.SubLevelOne != null)
+            {
+                <li>
+                    <ul style="list-style-type:none">
+                        <li>
+                            <span class="glyphicon glyphicon-leaf" aria-hidden="true">
+                                @levelMain.SubLevelOne.Title
+                            </span>
+                          
+                               
+                            </li>
+                        @if (levelMain.SubLevelOne.SubLevelTwo != null)
+                        {
+                            <li>
+                                <ul style="list-style-type:none">
+                                    <li>
+                                         <span class="glyphicon  glyphicon-music" aria-hidden="true">
+                                            @levelMain.SubLevelOne.SubLevelTwo.Title - hello
+                                       </span>
+                                     
+                                    </li>
+                                    @if (levelMain.SubLevelOne.SubLevelTwo.SubLevelThree != null)
+                                    {
+                                        <li>
+                                            <ul style="list-style-type:none">
+                                                <li>
+                                                  
+                                                     <span class="glyphicon  glyphicon-cloud" aria-hidden="true">
+                                                        @levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.Title
+                                                  </span>
+                                                </li>
+                                                @if (levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour != null)
+                                                {
+                                                    <li class="list-unstyled">
+                                                        <ul style="list-style-type:none">
+                                                            <li>
+                                                                 <span class="glyphicon  glyphicon-star" aria-hidden="true">
+                                                                @levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.Title
+                                                                </span>
+                                                            </li>
+                                                            @if (levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFive != null)
+                                                            {
+                                                                <li class="list-unstyled">
+                                                                    <ul style="list-style-type:none">
+                                                                        <li>
+
+                                                                            
+                                                                            <span class="glyphicon  glyphicon-glass" aria-hidden="true">
+                                                                            @levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFive.Title
+                                                                                </span>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    </li>
+                                                }
+                                            </ul>
+
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+        }
+    </ul>
+
+
+
+
+
+</div>
+

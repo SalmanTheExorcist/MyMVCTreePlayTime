@@ -1,0 +1,52 @@
+﻿@model IEnumerable<LevelsWithDbWebApp.Models.MyLevelsHolderMug>
+@using LevelsWithDbWebApp.Models
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="jumbotron">
+    <h1>All Levels-Collections From DB</h1>
+</div>
+<div class="row">
+   <table class="table table-striped table-bordered">
+       <thead>
+           <tr class="info">
+               <th>
+                   <div class="form-group col-sm-12">
+                       <div class="col-sm-4">
+                        Collection Name (Mug)
+                       </div>
+                       <div class="col-sm-8">
+                           Tree-Details
+                       </div>
+                   </div>
+               </th>
+           </tr>
+           </thead>
+       <tbody>
+           @foreach (var singleMug in Model)
+           {
+               <tr>
+                   <td>
+                       <div class="form-group col-sm-12">
+                           <div class="col-sm-4">
+                               @singleMug.MyLevelsHolderMugName
+                           </div>
+                           <div class="col-sm-8">
+                               @*@Html.Partial("_RenderMyLevelsHolderMugsWithGlyicons", singleMug)*@
+                               @Html.Partial("_RenderMyLevelsHolderMugs", singleMug)
+                           </div>
+                       </div>
+                        
+               
+                         
+                   </td>
+               </tr>
+           }
+       </tbody>
+   </table>
+
+
+</div>

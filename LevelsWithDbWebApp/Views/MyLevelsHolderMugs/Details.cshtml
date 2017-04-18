@@ -1,0 +1,116 @@
+﻿@model LevelsWithDbWebApp.Models.MyLevelsHolderMug
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>MyLevelsHolderMug</h4>
+    <hr />
+    <dl class="dl-horizontal well">
+        <dt>
+            @Html.DisplayNameFor(model => model.MyLevelsHolderMugName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MyLevelsHolderMugName)
+        </dd>
+
+    </dl>
+</div>
+
+<div class="row">
+
+   
+
+    <div class="row form-group">
+        @Html.ActionLink("Create New Main Level", "Create", "LevelMains", new { id = Model.MyLevelsHolderMugID },null)
+    </div>
+
+    <ul class="list-unstyled">
+        @foreach (var levelMain in Model.LevelMains)
+        {
+            <li>@levelMain.Title -    @Html.ActionLink("Edit", "Edit", "LevelMains", new { id= levelMain.LevelMainID },null) | 
+                                       @Html.ActionLink("Add SubLevelOne", "Create", "SubLevelOnes", new { id = levelMain.LevelMainID }, null) | 
+                                       @Html.ActionLink("Delete", "Delete", "LevelMains", new { id = levelMain.LevelMainID },null)
+           </li>
+            if (levelMain.SubLevelOne != null)
+            {
+                <li>
+                    <ul>
+                        <li>
+                            @levelMain.SubLevelOne.Title - @Html.ActionLink("Edit", "Edit", "SubLevelOnes", new { id = levelMain.SubLevelOne.SubLevelOneID }, null) |
+                                                           @Html.ActionLink("Add SubLevelTwo", "Create", "SubLevelTwoes", new { id = levelMain.SubLevelOne.SubLevelOneID }, null) | 
+                                                           @Html.ActionLink("Delete", "Delete", "SubLevelOnes", new { id = levelMain.SubLevelOne.SubLevelOneID }, null)
+                        </li>
+                        @if (levelMain.SubLevelOne.SubLevelTwo != null)
+                        {
+                            <li class="list-unstyled">
+                                <ul>
+                                    <li>@levelMain.SubLevelOne.SubLevelTwo.Title - @Html.ActionLink("Edit", "Edit", "SubLevelTwoes", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelTwoID }, null) |
+                                                                                    @Html.ActionLink("Add SubLevelThree", "Create", "SubLevelThrees", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelTwoID }, null) |                                               
+                                                                                     @Html.ActionLink("Delete", "Delete", "SubLevelTwoes", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelTwoID }, null)
+                                    </li>
+                                    @if (levelMain.SubLevelOne.SubLevelTwo.SubLevelThree != null)
+                                    {
+                                        <li class="list-unstyled">
+                                            <ul>
+                                                <li>
+                                                    @levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.Title -  @Html.ActionLink("Edit", "Edit", "SubLevelThrees", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelThreeID }, null) |
+                                                                                                            @Html.ActionLink("Add SubLevelFour", "Create", "SubLevelFours", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelThreeID}, null) |      
+                                                                                                            @Html.ActionLink("Delete", "Delete", "SubLevelThrees", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelThreeID }, null)
+                                                </li>
+                                                @if (levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour != null)
+                                                {
+                                                    <li class="list-unstyled">
+                                                        <ul>
+                                                            <li>
+                                                                @levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.Title -  @Html.ActionLink("Edit", "Edit", "SubLevelFours", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFourID }, null) |
+                                                                                                                                        @Html.ActionLink("Add SubLevelFive", "Create", "SubLevelFives", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFourID}, null) |                                                                        
+                                                                                                                                        @Html.ActionLink("Delete", "Delete", "SubLevelFours", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFourID }, null)
+                                                            </li>
+                                                            @if (levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFive != null)
+                                                            {
+                                                                <li class="list-unstyled">
+                                                                    <ul>
+                                                                        <li>
+                                                                            @levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFive.Title  @Html.ActionLink("Edit", "Edit", "SubLevelFives", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFive.SubLevelFiveID }, null) |
+                                                                                                                                                              @Html.ActionLink("Delete", "Delete", "SubLevelFives", new { id = levelMain.SubLevelOne.SubLevelTwo.SubLevelThree.SubLevelFour.SubLevelFive.SubLevelFiveID }, null)
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    </li>
+                                                }
+                                            </ul>
+
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+
+        }
+    </ul>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+<p>
+    @*@Html.ActionLink("Edit Mug Name Field", "Edit", new { id = Model.MyLevelsHolderMugID }) |*@
+    @Html.ActionLink("Back to Mugs List", "Index")
+</p>
